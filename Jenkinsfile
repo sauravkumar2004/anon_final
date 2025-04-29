@@ -5,6 +5,12 @@ pipeline {
         CONTAINER_NAME = 'ecommerce-web-container' 
     }
     stages {
+        stage('Prepare Git') {
+            steps {
+                bat 'git config --global http.sslVerify false'
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
